@@ -7,5 +7,8 @@ ADD www /usr/share/nginx/html
 ADD files/index.html.tmpl /usr/share/nginx/
 ADD files/docker-entrypoint.sh /entrypoint.sh
 
+ARG VERSION=dev
+LABEL version="${VERSION}" maintainer="fopina <https://github.com/fopina/docker-ca-dist/>"
+
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD [ "nginx", "-g", "daemon off;" ]
