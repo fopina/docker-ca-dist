@@ -1,6 +1,7 @@
 FROM nginx:1.17-alpine
 
-RUN wget https://github.com/fopina/confgen/releases/download/v0.1.0/confgen_linux_amd64 -O /usr/local/bin/confgen
+RUN wget -O /usr/local/bin/confgen \
+    https://github.com/fopina/confgen/releases/download/v0.1.0/confgen_linux_$(uname -m | grep -q x86_64 && echo amd64 || echo arm)
 RUN chmod a+x /usr/local/bin/confgen
 
 ADD www /usr/share/nginx/html

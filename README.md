@@ -13,11 +13,11 @@ If you only have the `.pem` version of your CA, create a `.p12` version (for win
 openssl pkcs12 -export -out ca.p12 -in ca.pem -nokeys
 ```
 
-Place `ca.pem` and `ca.p12` in a directory and bind-mount it to `/usr/share/nginx/html/certs`
+Place `ca.pem` and `ca.p12` in a directory and bind-mount it to `/usr/share/nginx/html/cert`
 
 ```
 docker run -d \
-           -v .../mycerts:/usr/share/nginx/html/certs:ro \
+           -v .../mycerts:/usr/share/nginx/html/cert:ro \
            -p 80:80 \
            fopina/ca-dist
 ```
@@ -40,7 +40,7 @@ Example:
 
 ```
 docker run -d \
-           -v .../mycerts:/usr/share/nginx/html/certs:ro \
+           -v .../mycerts:/usr/share/nginx/html/cert:ro \
            -v .../mycoolfavicon.ico:/usr/share/nginx/html/static/images/favicon.ico:ro \
            -e CADIST_NAME=myHomeCloud \
            -e CADIST_FOOTER="Trust me" \
